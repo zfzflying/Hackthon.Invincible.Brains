@@ -1,0 +1,45 @@
+﻿<controls:MetroWindow  x:Class="Microsoft.CognitiveServices.SpeechRecognition.MainWindow"
+        x:Name="_mainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="The Meeting of Invincible Brains" Margin="5,5,5,5"  Initialized="_mainWindow_Initialized" Width="706.8" Height="400" AllowsTransparency="True" WindowStyle="None" Opacity="1.0" Background="#FF74747C" >
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="Show Panel" Foreground="White" FontSize="25"/>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="0,0,10,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,13.6,345.2,10.4">
+            <Grid.ColumnDefinitions>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" >
+                <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="132" Margin="10,10,-4,-15.6" VerticalAlignment="Top" Width="306" Source="file://C:\Users\dongc\Desktop\Cognitive-Speech-STT-Windows-master\wave.gif" MediaEnded="MediaElement_MediaEnded" Opacity="0.6"/>
+            </Grid>
+            <Grid Margin="0,150,0,56.2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+
+                </Grid.RowDefinitions>
+                <Button x:Name="_startButton" Grid.Row="0" FontSize="20" Content="Start"  Foreground="White" Click="StartButton_Click"  Style="{DynamicResource MetroCircleButtonStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="60"/>
+                <Button x:Name="button1" Content="Summary" FontSize="20" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Center"  Width="80" Height="60" Click="button1_Click" Style="{DynamicResource MetroCircleButtonStyle}" Margin="133,18.6,133.4,-49" Grid.Row="1" />
+            </Grid>
+        </Grid>
+        <TextBox x:Name="_logText" Background="Gray" Foreground="White" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalScrollBarVisibility="Visible" Margin="10.4,10.6,10.2,20"/>
+    </Grid>
+</controls:MetroWindow>

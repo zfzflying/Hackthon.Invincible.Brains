@@ -1,0 +1,50 @@
+diff --git a/samples/SpeechRecognitionServiceExample/MainWindow.xaml.cs b/samples/SpeechRecognitionServiceExample/MainWindow.xaml.cs
+index a21fb35..8ad730c 100644
+--- a/samples/SpeechRecognitionServiceExample/MainWindow.xaml.cs
++++ b/samples/SpeechRecognitionServiceExample/MainWindow.xaml.cs
+@@ -411,10 +411,21 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
+         /// </summary>
+         private void CreateMicrophoneRecoClient()
+         {
++            string url = null;
++            if (this.Mode == SpeechRecognitionMode.ShortPhrase)
++            {
++                url = "https://d5a89bbf25d54ab2a6cbcff90aece700.api.cris.ai/ws/cris/speech/recognize";
++            }
++            else if (this.Mode == SpeechRecognitionMode.LongDictation)
++            {
++                url = "https://d5a89bbf25d54ab2a6cbcff90aece700.api.cris.ai/ws/cris/speech/recognize/continuous";
++            }
+             this.micClient = SpeechRecognitionServiceFactory.CreateMicrophoneClient(
+                 this.Mode,
+                 this.DefaultLocale,
+-                this.SubscriptionKey);
++                this.SubscriptionKey,
++                this.SubscriptionKey,
++                url);
+             this.micClient.AuthenticationUri = this.AuthenticationUri;
+ 
+             // Event handlers for speech recognition results
+@@ -477,7 +488,9 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
+             this.dataClient = SpeechRecognitionServiceFactory.CreateDataClient(
+                 this.Mode,
+                 this.DefaultLocale,
+-                this.SubscriptionKey);
++                this.SubscriptionKey,
++                this.SubscriptionKey,
++                "https://d5a89bbf25d54ab2a6cbcff90aece700.api.cris.ai/ws/cris/speech/recognize");
+             this.dataClient.AuthenticationUri = this.AuthenticationUri;
+ 
+             // Event handlers for speech recognition results
+diff --git a/samples/SpeechRecognitionServiceExample/app.config b/samples/SpeechRecognitionServiceExample/app.config
+index 6fe1063..6964aad 100644
+--- a/samples/SpeechRecognitionServiceExample/app.config
++++ b/samples/SpeechRecognitionServiceExample/app.config
+@@ -8,6 +8,6 @@
+     <add key="luisSubscriptionID" value="yourLuisSubsrciptionID" />
+     <add key="ShortWaveFile" value="whatstheweatherlike.wav" />
+     <add key="LongWaveFile" value="batman.wav" />
+-    <add key="AuthenticationUri" value="" />
++    <add key="AuthenticationUri" value="https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" />
+   </appSettings>
+ </configuration>
